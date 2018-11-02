@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package EditarContato;
+package Deletar;
 
 import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
@@ -13,19 +13,15 @@ import java.sql.PreparedStatement;
  *
  * @author saviovscncls
  */
-public class Edit {
-    public static void main(String[] args) {
-        try{
-        Connection mysql = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/contato?useSSL=false", "root", "savio123");
+public class DeletarContato {
 
-            String sql = "update contato set nome = ?, endereco = ?, email = ? where idContato = ?";
+    public static void main(String[] args) {
+        try {
+            Connection mysql = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/contato?useSSL=false", "root", "savio123");
+
+            String sql = "delete from contato where idContato = ?";
             PreparedStatement i = mysql.prepareStatement(sql);
-            
-            i.setString(1, "Eva Vasconcelos");
-            i.setString(2, "Rua Açucena");
-            i.setString(3, "eva@gmail.com");
-            i.setInt(4, 1);
-            
+            i.setInt(1, 3);
             i.execute();
 
             System.out.println("concluido");

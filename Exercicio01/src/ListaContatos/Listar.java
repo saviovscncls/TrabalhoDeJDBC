@@ -16,25 +16,24 @@ import java.sql.Statement;
  * @author saviovscncls
  */
 public class Listar {
+
     public static void main(String[] args) {
-        try{
-        Connection mysql = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/contato?useSSL=false", "root", "savio123");
+        try {
+            Connection mysql = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/contato?useSSL=false", "root", "savio123");
             Statement st = mysql.createStatement();
-            
+
             st.executeQuery("select * from contato");
-            
+
             ResultSet rs = st.getResultSet();
-            
-            while (rs.next()){
-                
+
+            while (rs.next()) {
+
                 System.out.println("nome: " + rs.getString("nome"));
                 System.out.println("Endereço: " + rs.getString("endereco"));
                 System.out.println("Email: " + rs.getString("email"));
                 System.out.println("#######################");
-                
-                
-            }          
-           
+
+            }
 
             System.out.println("concluido");
         } catch (Exception e) {
